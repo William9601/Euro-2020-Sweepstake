@@ -43,5 +43,6 @@ export const getLeaderboard = (nanoId) => {
 };
 
 export const login = (user) => {
-  return axios.post(`${base_url}/login/${user}`);
+  //return axios.post(`${base_url}/login/${user}`);
+  console.log('Axios call');
 };

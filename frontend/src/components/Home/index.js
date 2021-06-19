@@ -14,9 +14,16 @@ function Home() {
 
   const loginHandler = async (e) => {
     e.preventDefault();
-    const res = await login(e.target.email.value);
-    if (res.data !== '') setUser(res.data);
-    else setEmail('');
+    try {
+      const res = await login(email);
+      if (res.data !== '') {
+        console.log('loooooooog', res.data);
+        setUser(res.data)
+      }
+    } catch(error) {
+      console.log(error);
+    }
+    // else setEmail('');
   };
 
   const loginOrRedirect = user.id ? (
@@ -37,7 +44,7 @@ function Home() {
             variant='outlined'
             onChange={changeHandler}
             value={email}
-            data-testid='formId'
+            inputProps={{'data-testid': 'emailInput'}}
           />
         </form>
         <Box m={1}>
