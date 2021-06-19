@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { Box, Button, TextField, Typography } from "@material-ui/core";
-import { Redirect } from "react-router-dom";
-import { login } from "../../httpClient/axios";
-import "./style.css";
+import { useState } from 'react';
+import { Box, Button, TextField, Typography } from '@material-ui/core';
+import { Redirect } from 'react-router-dom';
+import { login } from '../../httpClient/axios';
+import './style.css';
 
 function Home() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [user, setUser] = useState({});
 
   const changeHandler = (e) => {
@@ -15,37 +15,38 @@ function Home() {
   const loginHandler = async (e) => {
     e.preventDefault();
     const res = await login(e.target.email.value);
-    if (res.data !== "") setUser(res.data);
-    else setEmail("");
+    if (res.data !== '') setUser(res.data);
+    else setEmail('');
   };
 
   const loginOrRedirect = user.id ? (
     <Redirect to={`/user/${user.id}`} />
   ) : (
-    <div className="home__container">
+    <div className='home__container'>
       <Box m={1}>
-        <Typography className="home__title" variant="h4">
+        <Typography className='home__title' variant='h4'>
           Euro2020 Sweepstake
         </Typography>
       </Box>
       <Box m={5}>
-        <form id="login" noValidate autoComplete="off" onSubmit={loginHandler}>
+        <form id='login' noValidate autoComplete='off' onSubmit={loginHandler}>
           <TextField
-            className="home__emailfield"
-            name="email"
-            label="Email"
-            variant="outlined"
+            className='home__emailfield'
+            name='email'
+            label='Email'
+            variant='outlined'
             onChange={changeHandler}
             value={email}
+            data-testid='formId'
           />
         </form>
         <Box m={1}>
           <Button
-            type="submit"
-            form="login"
-            value="Submit"
-            variant="contained"
-            color="primary"
+            type='submit'
+            form='login'
+            value='Submit'
+            variant='contained'
+            color='primary'
           >
             Login
           </Button>
@@ -53,28 +54,28 @@ function Home() {
       </Box>
       <Box>
         <img
-          src="https://upload.wikimedia.org/wikipedia/en/9/96/UEFA_Euro_2020_Logo.svg"
-          width="85%"
-          alt="EUFA Euro 2020 Logo"
+          src='https://upload.wikimedia.org/wikipedia/en/9/96/UEFA_Euro_2020_Logo.svg'
+          width='85%'
+          alt='EUFA Euro 2020 Logo'
         />
         <div>
           <a
-            href="//en.wikipedia.org/wiki/File:UEFA_Euro_2020_Logo.svg"
-            title="Fair use of copyrighted material in the context of UEFA Euro 2020"
+            href='//en.wikipedia.org/wiki/File:UEFA_Euro_2020_Logo.svg'
+            title='Fair use of copyrighted material in the context of UEFA Euro 2020'
           >
-            <Typography variant="caption">
-              By The logo is from the UEFA.,{" "}
+            <Typography variant='caption'>
+              By The logo is from the UEFA.,{' '}
             </Typography>
           </a>
-          <a href="https://en.wikipedia.org/w/index.php?curid=51705124">
-            <Typography variant="caption">Fair use</Typography>
+          <a href='https://en.wikipedia.org/w/index.php?curid=51705124'>
+            <Typography variant='caption'>Fair use</Typography>
           </a>
         </div>
       </Box>
     </div>
   );
 
-  return <div className="home__container">{loginOrRedirect}</div>;
+  return <div className='home__container'>{loginOrRedirect}</div>;
 }
 
 export default Home;
