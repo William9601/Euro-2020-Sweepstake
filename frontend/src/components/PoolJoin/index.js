@@ -1,29 +1,35 @@
-import { Button, Box, TextField } from "@material-ui/core";
-import "./style.css";
+import { Button, Box, TextField } from '@material-ui/core';
+import './style.css';
 
 function PoolJoin({ submitHandler, changeHandler, value }) {
   return (
     <Box m={2}>
-      <form id="join" noValidate autoComplete="off" onSubmit={submitHandler}>
-        <div className="pool-join__fields">
+      <form
+        id='join'
+        noValidate
+        autoComplete='off'
+        onSubmit={submitHandler}
+        data-testid='formId'
+      >
+        <div className='pool-join__fields'>
           <TextField
-            id="poolId"
-            label="Invite code"
-            variant="outlined"
-            type="text"
-            size="small"
+            id='poolId'
+            label='Invite code'
+            variant='outlined'
+            type='text'
+            size='small'
             value={value}
             onChange={changeHandler}
-            className="pool-join__textfield"
+            className='pool-join__textfield'
           />
         </div>
-        <div className="pool-join__fields">
+        <div className='pool-join__fields'>
           <Button
-            type="submit"
-            form="join"
-            value="Submit"
-            variant="contained"
-            color="primary"
+            type='submit'
+            form='join'
+            value='Submit'
+            variant='contained'
+            color='primary'
           >
             Join Existing Pool
           </Button>
