@@ -17,10 +17,9 @@ function Home() {
     try {
       const res = await login(email);
       if (res.data !== '') {
-        console.log('loooooooog', res.data);
-        setUser(res.data)
+        setUser(res.data);
       }
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
     // else setEmail('');
@@ -44,7 +43,7 @@ function Home() {
             variant='outlined'
             onChange={changeHandler}
             value={email}
-            inputProps={{'data-testid': 'emailInput'}}
+            inputProps={{ 'data-testid': 'emailInput' }}
           />
         </form>
         <Box m={1}>
