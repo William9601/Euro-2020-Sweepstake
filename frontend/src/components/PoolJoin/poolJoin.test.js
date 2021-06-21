@@ -3,7 +3,6 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 
-
 describe('Test Button component', () => {
   it('should call function on form submit', () => {
     const mockSubmitHandler = jest.fn();
@@ -13,5 +12,3 @@ describe('Test Button component', () => {
     expect(mockSubmitHandler).toHaveBeenCalled();
   });
 });
-
-

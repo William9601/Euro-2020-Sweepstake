@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Box, Button, Typography } from "@material-ui/core";
-import PoolJoin from "../PoolJoin";
-import PoolList from "../PoolList";
-import { getPools, postCreatePool, postJoinPool } from "../../httpClient/axios";
-import "./style.css";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Box, Button, Typography } from '@material-ui/core';
+import PoolJoin from '../PoolJoin';
+import PoolList from '../PoolList';
+import { getPools, postCreatePool, postJoinPool } from '../../httpClient/axios';
+import './style.css';
 
 function Profile() {
   const [data, setData] = useState();
@@ -25,7 +25,8 @@ function Profile() {
   const createPoolHandler = async () => {
     const res = await postCreatePool(userid);
     setData(res.data.pools);
-    console.log('createPoolHandler log', res.data.pools);
+    // object of arrays {id: int, nanoId: str, predictions:[], user_pool:{}}
+    // console.log('createPoolHandler log', res.data.pools);
   };
 
   // export const postCreatePool = (userId) => {
@@ -41,7 +42,7 @@ function Profile() {
     } catch (e) {
       console.log(e);
     }
-    setPoolText("");
+    setPoolText('');
   };
 
   // export const postJoinPool = (poolId, userId) => {
@@ -49,8 +50,8 @@ function Profile() {
   // };
 
   return (
-    <div className="profile__container">
-      <Typography className="profile__header" variant="h5">
+    <div className='profile__container'>
+      <Typography className='profile__header' variant='h5'>
         Join / Create Pool
       </Typography>
       <Box m={1}>
@@ -62,9 +63,9 @@ function Profile() {
       </Box>
       <Box m={1} mb={2}>
         <Button
-          className="profile_addpool"
-          variant="outlined"
-          color="secondary"
+          className='profile_addpool'
+          variant='outlined'
+          color='secondary'
           onClick={createPoolHandler}
         >
           Add New Pool
