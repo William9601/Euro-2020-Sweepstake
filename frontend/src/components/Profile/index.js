@@ -16,6 +16,7 @@ function Profile() {
     (async () => {
       const res = await getPools(userid);
       setData(res.data.pools);
+      console.log('useEffect log', res.data.pools);
     })();
   }, [userid]);
   // export const getPools = (userId) => {
@@ -26,7 +27,7 @@ function Profile() {
     const res = await postCreatePool(userid);
     setData(res.data.pools);
     // object of arrays {id: int, nanoId: str, predictions:[], user_pool:{}}
-    // console.log('createPoolHandler log', res.data.pools);
+    console.log('createPoolHandler log', res.data.pools);
   };
 
   // export const postCreatePool = (userId) => {
