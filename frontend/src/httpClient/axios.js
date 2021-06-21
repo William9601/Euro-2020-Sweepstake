@@ -31,6 +31,7 @@ export const getPools = (userId) => {
 };
 
 export const postCreatePool = (userId) => {
+  console.log('post request', userId);
   return axios.post(`${base_url}/pool/user/${userId}`);
 };
 
@@ -43,6 +44,5 @@ export const getLeaderboard = (nanoId) => {
 };
 
 export const login = (user) => {
-  //return axios.post(`${base_url}/login/${user}`);
-  console.log('Axios call');
+  return axios.post(`${base_url}/login/${user}`);
 };

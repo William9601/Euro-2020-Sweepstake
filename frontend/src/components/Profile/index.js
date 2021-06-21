@@ -18,11 +18,20 @@ function Profile() {
       setData(res.data.pools);
     })();
   }, [userid]);
+  // export const getPools = (userId) => {
+  //   return axios.get(`${base_url}/pool/user/${userId}`);
+  // };
 
   const createPoolHandler = async () => {
     const res = await postCreatePool(userid);
     setData(res.data.pools);
+    console.log('createPoolHandler log', res.data.pools);
   };
+
+  // export const postCreatePool = (userId) => {
+  //   console.log('post request', userId);
+  //   return axios.post(`${base_url}/pool/user/${userId}`);
+  // };
 
   const joinPoolSubmitHandler = async (e) => {
     e.preventDefault();
@@ -34,6 +43,10 @@ function Profile() {
     }
     setPoolText("");
   };
+
+  // export const postJoinPool = (poolId, userId) => {
+  //   return axios.post(`${base_url}/pool/${poolId}/user/${userId}`);
+  // };
 
   return (
     <div className="profile__container">
