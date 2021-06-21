@@ -1,6 +1,6 @@
-import { Link, useRouteMatch } from "react-router-dom";
-import { ListItem, ListItemText } from "@material-ui/core";
-import "./style.css";
+import { Link, useRouteMatch } from 'react-router-dom';
+import { ListItem, ListItemText } from '@material-ui/core';
+import './style.css';
 
 function PoolListItem({ data, selected, setSelected }) {
   const { url } = useRouteMatch();
