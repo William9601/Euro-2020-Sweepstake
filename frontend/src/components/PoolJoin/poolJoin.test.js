@@ -14,16 +14,10 @@ describe('Test Button component', () => {
   });
 });
 
-// Good job again with this one. This one shows how easy it is to test something when it receives
-//  the functions through props!
-// You could also write a test here for the onChangeHandler and a larger test
-// that changes the values and then checks the submitHandler in combination.
-// Ensuring it has been called with the correct values!
-
 describe('Test Text Input', () => {
   it('should call function on text change', () => {
     render(<PoolJoin />);
-    const text = screen.getByRole('textbox');
+    const text = screen.getByLabelText('Invite code');
     userEvent.type(text, 'Hello');
     expect(text).toHaveValue('Hello');
   });
