@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const base_url = process.env.REACT_APP_BACKEND_API_HOST;
 
@@ -31,7 +31,6 @@ export const getPools = (userId) => {
 };
 
 export const postCreatePool = (userId) => {
-  console.log('post request', userId);
   return axios.post(`${base_url}/pool/user/${userId}`);
 };
 

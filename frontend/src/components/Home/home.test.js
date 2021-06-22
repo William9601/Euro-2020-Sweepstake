@@ -2,7 +2,6 @@ import Home from '.';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
-
 import '@testing-library/jest-dom/extend-expect';
 import * as api from '../../httpClient/axios';
 import { BrowserRouter as Router } from 'react-router-dom';
