@@ -1,15 +1,16 @@
-const { Sequelize, DataTypes } = require("sequelize");
-require("dotenv").config();
+const { Sequelize, DataTypes } = require('sequelize');
+require('dotenv').config();
 
 const db = {};
-
+const dev = process.env.NODE_ENV === 'dev';
+const dbName = dev ? process.env.POSTGRES_DB : process.env.TEST_DB;
 const sequelize = new Sequelize(
-  process.env.POSTGRES_DB,
+  dbName,
   process.env.POSTGRES_USER,
   process.env.POSTGRES_PASSWORD,
   {
-    host: "localhost",
-    dialect: "postgres",
+    host: 'localhost',
+    dialect: 'postgres',
     logging: false,
     pool: {
       max: 5,
@@ -20,21 +21,21 @@ const sequelize = new Sequelize(
   }
 );
 
-const Team = sequelize.define("team", {
+const Team = sequelize.define('team', {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
 });
 
-const Match = sequelize.define("match", {
+const Match = sequelize.define('match', {
   kickoff: {
     type: DataTypes.DATE,
     allowNull: false,
   },
 });
 
-const Result = sequelize.define("result", {
+const Result = sequelize.define('result', {
   homeScore: {
     type: DataTypes.INTEGER,
     allowNull: true,
@@ -45,7 +46,7 @@ const Result = sequelize.define("result", {
   },
 });
 
-const User = sequelize.define("user", {
+const User = sequelize.define('user', {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -59,7 +60,7 @@ const User = sequelize.define("user", {
   },
 });
 
-const Pool = sequelize.define("pool", {
+const Pool = sequelize.define('pool', {
   nanoId: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -68,7 +69,7 @@ const Pool = sequelize.define("pool", {
 
 // eslint-disable-next-line camelcase
 const User_Pool = sequelize.define(
-  "user_pool",
+  'user_pool',
   {
     owner: {
       type: DataTypes.BOOLEAN,
@@ -78,7 +79,7 @@ const User_Pool = sequelize.define(
   { timestamps: false }
 );
 
-const Prediction = sequelize.define("prediction", {
+const Prediction = sequelize.define('prediction', {
   homeScore: {
     type: DataTypes.INTEGER,
     allowNull: true,
@@ -93,22 +94,22 @@ const Prediction = sequelize.define("prediction", {
   },
 });
 
-Team.hasMany(Match, { foreignKey: "homeTeamId" });
-Team.hasMany(Match, { foreignKey: "awayTeamId" });
-Match.belongsTo(Team, { as: "homeTeam", foreignKey: { allowNull: false } });
-Match.belongsTo(Team, { as: "awayTeam", foreignKey: { allowNull: false } });
+Team.hasMany(Match, { foreignKey: 'homeTeamId' });
+Team.hasMany(Match, { foreignKey: 'awayTeamId' });
+Match.belongsTo(Team, { as: 'homeTeam', foreignKey: { allowNull: false } });
+Match.belongsTo(Team, { as: 'awayTeam', foreignKey: { allowNull: false } });
 
 Match.hasOne(Result);
-Result.belongsTo(Match, { as: "match", foreignKey: { allowNull: false } });
+Result.belongsTo(Match, { as: 'match', foreignKey: { allowNull: false } });
 
 Match.hasMany(Prediction);
-Prediction.belongsTo(Match, { as: "match", foreignKey: { allowNull: false } });
+Prediction.belongsTo(Match, { as: 'match', foreignKey: { allowNull: false } });
 
 User.hasMany(Prediction);
-Prediction.belongsTo(User, { as: "user", foreignKey: { allowNull: false } });
+Prediction.belongsTo(User, { as: 'user', foreignKey: { allowNull: false } });
 
 Pool.hasMany(Prediction);
-Prediction.belongsTo(Pool, { as: "pool", foreignKey: { allowNull: false } });
+Prediction.belongsTo(Pool, { as: 'pool', foreignKey: { allowNull: false } });
 
 User.belongsToMany(Pool, { through: User_Pool });
 Pool.belongsToMany(User, { through: User_Pool });
