@@ -26,30 +26,33 @@ function Register() {
 		<div className='home__container'>
 			<Box m={1}>
 				<Typography className='home__title' variant='h4'>
-					Register
+					Register New User
 				</Typography>
 			</Box>
-			<Box m={5}>
+			<Box m={2}>
 				<form id='register' onSubmit={handleSubmit}>
-					<TextField
-						className='home__emailfield'
-						type='text'
-						label='Name'
-						variant='outlined'
-						required
-						value={userName}
-						onChange={(e) => setUserName(e.target.value)}
-					/>
-
-					<TextField
-						className='home__emailfield'
-						type='email'
-						variant='outlined'
-						label='Email'
-						required
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-					/>
+					<Box m={1}>
+						<TextField
+							className='home__emailfield'
+							type='text'
+							label='Name'
+							variant='outlined'
+							required
+							value={userName}
+							onChange={(e) => setUserName(e.target.value)}
+						/>
+					</Box>
+					<Box m={1}>
+						<TextField
+							className='home__emailfield'
+							type='email'
+							variant='outlined'
+							label='Email'
+							required
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+						/>
+					</Box>
 					<Box m={1}>
 						<Button
 							type='submit'

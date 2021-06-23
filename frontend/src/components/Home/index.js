@@ -52,7 +52,7 @@ function Home() {
 						inputProps={{ 'data-testid': 'emailInput' }}
 					/>
 				</form>
-				<Box m={1}>
+				<Box m={2}>
 					<Button
 						type='submit'
 						form='login'
