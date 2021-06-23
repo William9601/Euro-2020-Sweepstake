@@ -17,7 +17,6 @@ function Register() {
 		} catch (error) {
 			console.log(error);
 		}
-		//POST REQUEST-- AXIOS REGISTER FUNCTION
 		setUserName('');
 		setEmail('');
 		history.push('/');
