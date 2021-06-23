@@ -3,14 +3,11 @@ import { Box, Button, TextField, Typography } from '@material-ui/core';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../httpClient/axios';
 import './style.css';
-import { useAuth0 } from '@auth0/auth0-react';
 import { useHistory } from 'react-router-dom';
 
 function Home() {
 	const [email, setEmail] = useState('');
 	const [user, setUser] = useState({});
-	// const { loginWithRedirect } = useAuth0();
-	// const { logout } = useAuth0();
 	const history = useHistory();
 
 	const redirectToRegister = () => {
@@ -38,12 +35,6 @@ function Home() {
 		<Redirect to={`/user/${user.id}`} />
 	) : (
 		<div className='home__container'>
-			{/* <Box>
-				<button onClick={() => loginWithRedirect()}>Log in with Google</button>
-			</Box> */}
-			{/* <Box>
-				<button onClick={() => logout()}>Log out</button>
-			</Box> */}
 			<Box m={1}>
 				<Typography className='home__title' variant='h4'>
 					Euro2020 Sweepstake
@@ -75,7 +66,6 @@ function Home() {
 				<Box m={1}>
 					<Button
 						type='submit'
-						form='login'
 						value='Submit'
 						variant='contained'
 						color='primary'
