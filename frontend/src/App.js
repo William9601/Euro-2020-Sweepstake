@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 
 function App() {
-  return (
+   return (
     <Router>
       <div className='app__container'>
         <Navbar />
