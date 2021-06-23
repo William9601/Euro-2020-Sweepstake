@@ -9,8 +9,8 @@ import { useHistory } from 'react-router-dom';
 function Home() {
 	const [email, setEmail] = useState('');
 	const [user, setUser] = useState({});
-	const { loginWithRedirect } = useAuth0();
-	const { logout } = useAuth0();
+	// const { loginWithRedirect } = useAuth0();
+	// const { logout } = useAuth0();
 	const history = useHistory();
 
 	const redirectToRegister = () => {

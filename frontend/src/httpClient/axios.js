@@ -46,9 +46,21 @@ export const login = (user) => {
 	return axios.post(`${base_url}/login/${user}`);
 };
 
-export const register = (user, email) => {
-	console.log('Axios Log =>', user, email);
-	return axios.post(`${base_url}/register/${user}`);
+export const register = (name, email) => {
+	console.log('Axios Log =>', name, email);
+	axios
+		.post(`${base_url}/user`, {
+			name: name,
+			email: email,
+		})
+		.then(
+			(response) => {
+				console.log('axios Response', response);
+			},
+			(error) => {
+				console.log(error);
+			}
+		);
 };
 
 // const db = require("../models/pg");
