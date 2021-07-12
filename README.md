@@ -60,3 +60,4 @@ Project is: _Work in Progress_
 ## Contact
 
 Created by [@jonbrook](https://github.com/jonbrook) - feel free to contact me!
+Contributors William von Arend, David Bell
